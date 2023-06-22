@@ -1,0 +1,50 @@
+数据库名：stu
+
+student表
+
+ CREATE TABLE student(
+ snum CHAR(10) PRIMARY KEY,
+ sname VARCHAR(20),
+ ssex VARCHAR(20),
+ sbirth VARCHAR(20),
+ sethnic VARCHAR(20),
+ syear VARCHAR(20),
+ shome VARCHAR(20),
+ smajor VARCHAR(20),
+ scollege VARCHAR(20)
+ )DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+user表
+
+ CREATE TABLE user(
+id char(10) PRIMARY KEY,
+password varchar(20)
+ )DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+CREATE TABLE class(
+con CHAR(20) PRIMARY KEY,
+cname VARCHAR(20) NOT NULL,
+ctime VARCHAR(4) NOT NULL
+)DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE TABLE sc(
+sno CHAR(20),
+con CHAR(20),
+time VARCHAR(20) NOT NULL,
+PRIMARY KEY(sno,con),
+FOREIGN KEY (sno) REFERENCES student(snum),
+FOREIGN KEY (con) REFERENCES class(con)
+)DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+CREATE TABLE grade(
+sno CHAR(20),
+con CHAR(20),
+grade double NOT NULL,
+PRIMARY KEY(sno,con),
+FOREIGN KEY (sno) REFERENCES student(snum),
+FOREIGN KEY (con) REFERENCES class(con)
+)DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
